@@ -1,0 +1,40 @@
+﻿@model IEnumerable<AdmNerdGo.Models.Loja>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Loja</th>
+            <th scope="col">Logo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+
+                @{
+                    var base64 = Convert.ToBase64String(item.Logo);
+                    var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                }
+
+                <td>
+                    <img src='@imgSrc' style="max-width:200px; max-height:200px;" />
+                </td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>

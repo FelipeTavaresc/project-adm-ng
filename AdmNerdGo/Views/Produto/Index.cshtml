@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AdmNerdGo.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produto";
+}
+
+<style>
+    ul li {
+        display: inline-block;
+        margin-left: 1%
+    }
+
+    .links {
+        margin-left: 20%;
+    }
+</style>
+
+<div class="row">
+    <p class="col-md-9">
+        <a class="btn btn-primary" asp-action="Create">Cadastrar novo</a>
+    </p>
+</div>
+
+<div class="links">
+    <ul>
+        <li><a asp-controller="Produto" asp-route-id="1" asp-action="Categoria">Colecionáveis</a></li>
+        <li><a asp-controller="Produto" asp-route-id="2" asp-action="Categoria">Decoração</a></li>
+        <li><a asp-controller="Produto" asp-route-id="3" asp-action="Categoria">Games</a></li>
+        <li><a asp-controller="Produto" asp-route-id="4" asp-action="Categoria">Livros</a></li>
+        <li><a asp-controller="Produto" asp-route-id="5" asp-action="Categoria">Moda</a></li>
+        <li><a asp-controller="Produto" asp-route-id="6" asp-action="Categoria">Destaques/Home</a></li>
+    </ul>
+</div>
+
+<section id="corpo" class="container">
+    <div id="produtos-destaques" class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-2 col-md-3" id="produto-destaque">
+                    <a asp-area="" asp-controller="Compare" asp-action="Index">
+                        <div id="produto-colecionaveis">
+                            @{
+                                var base64 = Convert.ToBase64String(item.Imagem);
+                                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                            }
+
+                            <div class="imagem-produto">
+                                <img src='@imgSrc' style="max-width:200px; max-height:200px">
+                            </div>
+
+                            <div class="titulo-produto">
+                                <p>@Html.DisplayFor(modelItem => item.Descricao)</p>
+                            </div>
+
+                            <div class="preco">
+                                <p> a partir de</p>
+                                <p><span>R$ @Html.DisplayFor(modelItem => item.Preco)</span></p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+
+
+

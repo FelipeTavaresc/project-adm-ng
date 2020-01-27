@@ -1,0 +1,49 @@
+﻿@model AdmNerdGo.Models.ViewModels.CompareFormViewModel;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Compare</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Compare.Produto" class="control-label"></label>
+                <select asp-for="Compare.ProdutoId" asp-items="@(new SelectList(Model.Produtos,"Id","Descricao"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Compare.Loja" class="control-label"></label>
+                <select asp-for="Compare.LojaId" asp-items="@(new SelectList(Model.Lojas,"Id","Nome"))" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Compare.Preco" class="control-label"></label>
+                <input asp-for="Compare.Preco" class="form-control" />
+                <span asp-validation-for="Compare.Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Compare.Parcelamento" class="control-label"></label>
+                <input asp-for="Compare.Parcelamento" class="form-control" />
+                <span asp-validation-for="Compare.Parcelamento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Compare.Link" class="control-label"></label>
+                <input asp-for="Compare.Link" class="form-control" />
+                <span asp-validation-for="Compare.Link" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

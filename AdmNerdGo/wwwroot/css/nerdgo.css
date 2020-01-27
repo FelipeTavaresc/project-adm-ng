@@ -1,0 +1,314 @@
+﻿@charset "utf-8";
+
+@fonte-face {
+	font-family: 'MuseoSans-Bold';
+	src: url(../fonte/MuseoSansForDell-Bold.ttf);
+	font-size: 1em;
+} 
+
+@fonte-face {
+	font-family: 'MuseoSans-Regular';
+	src: url(../fonte/MuseoSansForDell-Regular.ttf);
+	font-size: 1em;
+}
+
+/*fundo*/
+body {
+	overflow-x: hidden;
+}
+
+#fundo {
+	background-color: #efeeee;
+}
+
+/*cabeçalho*/
+/*menu fixo*/
+.menu-fixo {
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+
+#menu-fixo {
+	position: fixed;
+	width: 100%;
+	height: 150px;
+	z-index: 9999;
+	background-color: #fd9714;
+	display: inline-block;
+}
+
+#logotipo {
+	position: absolute;
+	margin-top: -5px;
+
+}
+
+#search {
+	position: relative;
+	display: block;
+	margin-top: 50px;
+	margin-left: 80px;
+}
+
+#search input {
+	float: left;
+	width: 600px;
+	height: 50px;
+	padding: 15px;
+	border-radius: 7px;
+	box-shadow: 1px 1px 3px black;
+	font-family: 'MuseoSans-Regular', sans-serif;
+	font-size: 14pt;
+}
+
+#search button {
+	position: relative;
+    float: right;
+    margin-right: 57px;
+    margin-top: -42px;
+    background-color: transparent;
+    border: none; 
+}
+
+/*nav menu*/
+.menu {
+	width: 100%;
+ 	height: 100px;
+ 	background-color: #fd9714;
+ 	display: flex;
+ 	margin-top: 150px;
+}
+
+.menu ul {
+	margin-left: 29px;
+	margin-top: 0px;
+	display: inline-block;
+	position: relative;
+}
+
+.menu li {
+	font-family: 'MuseoSans-Bold', sans-serif;
+	font-size: 20px;
+	text-decoration: none;
+	display: inline-block;
+	padding: 0px 20px;
+	margin-left: 100px;
+	text-align: center;
+}
+
+.menu li a {
+	color: #ffffff;
+}
+
+.menu li a:hover {
+	text-decoration: underline;
+	transition: 1s;
+}
+
+#cole a:hover {
+	color: #f0412e;
+}
+
+#jogo a:hover {
+	color: #6fbe4d;
+}
+
+#livro a:hover {
+	color: #1cacdb;
+}
+
+#vest a:hover {
+	color: #f8ef04;
+}
+
+/*caminhos links*/
+.caminho-paginas {
+	margin-top: 20px;
+}
+
+.caminho-paginas,
+.caminho-paginas a {
+	font-family: 'MuseoSans-Bold', sans-serif;
+	color: #6d6d6d;
+	font-weight: bold;
+}
+
+.caminho-paginas a:hover {
+	text-decoration: underline;
+	color: #6d6d6d;
+}
+
+/*corpo*/
+#corpo {
+	display: block;
+	align-content: center;
+	width: 1250px;
+	background-color: #ffffff;
+	margin-top: 20px;
+	box-shadow: 1px 1px 4px #606060;
+}
+
+/*rodapé*/
+footer {
+	margin-top: 20px;
+	width: 100%;
+}
+
+footer .row {
+	margin-top: 20px;
+}
+
+footer .row-laranja {
+	color: #ffffff;
+	height: 215px;
+	background-color: #fd9714;
+}
+
+.infos-rodape {
+	margin-left: 112px;
+}
+
+.col-empresas p,
+.col-sobre-contato p {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+.col-sociais {
+	display: block;
+}
+
+.col-sociais ul {
+	margin-top: 5px;
+	margin-left: -44px;
+}
+
+.col-sociais li{
+	display: inline-block;
+	text-decoration: none;
+	margin-left: 5px;
+}
+
+.col-empresas {
+	margin-top: -7px;
+	margin-left: -27px;
+	border-radius: 5px;
+	padding: 10px;
+}
+
+footer .row-preto {
+	margin-top: -20px;
+	height: 50px;
+	background-color: #303030;
+}
+
+.row-preto p {
+	margin-top: 17px;
+	color: #606060;
+	text-align: center;
+}*/
+
+
+/*configuração HOME*/
+/*slide/carrossel*/
+
+/*area destaques*/
+#produtos-destaques h2 {
+	font-family: 'MuseoSans-Bold', sans-serif;
+	font-size: 26pt;
+	font-weight: bold;
+	text-align: center;
+	color: #06033e;
+	margin-top: 50px;
+}
+
+#produtos-destaques {
+	position: relative;
+	display: inline-block;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+#produto-destaque a {
+	display: inline-block;
+	font-family: 'MuseoSans-Regular', sans-serif;
+	text-decoration: none;
+	text-align: center;
+	float: left;
+	background-color: #ffffff;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+#produto-destaque a:hover {
+	text-decoration: none;
+	border-radius: 5px;
+	border: 2px solid #efeeee;
+	box-shadow: 1px 1px 6px #6d6d6d;
+	transition: 1s;
+}
+
+.titulo-produto {
+	text-align: justify;
+	font-size: 12pt;
+	font-weight: bold;
+	color: #6d6d6d;
+	margin: 10px;
+	border-top: 1px solid #efeeee;
+}
+
+.preco {
+	text-align: justify;
+	font-size: 10pt;
+	color: #6d6d6d;
+	margin: 10px;
+}
+
+.preco span {
+	color: #22b14c; 
+	font-weight: bold;
+}
+
+.compare {
+	top: 50%;
+	left: 50%;
+	margin: 10px;
+	font-size: 12px;
+	border-radius: 5px;
+}
+
+.compare p{
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+#compare-colecionaveis {
+	color: #f0412e;
+	border: 2px solid #f0412e;
+}
+
+#compare-jogos {
+	color: #6fbe4d;
+	border: 2px solid #6fbe4d;
+}
+
+#compare-livros {
+	color: #1cacdb;
+	border: 2px solid #1cacdb;
+}
+
+#compare-vestuario {
+	color: #f8ef04;
+	border: 2px solid #f8ef04;
+}
+
+/*propaganda*/
+#banner img {
+	margin-top: 100px;
+	margin-left: 146px;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 4px #606060;
+	display: block;
+}
+
