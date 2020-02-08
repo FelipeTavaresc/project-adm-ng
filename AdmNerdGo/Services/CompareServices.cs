@@ -50,5 +50,44 @@ namespace AdmNerdGo.Services
             _context.Add(obj);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<Compare> FindComparationById(int comparationId)
+        {
+            return await _context.Compare.Where(x => x.Id == comparationId).FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateAsync(Compare compare)
+        {
+            bool hasAny = await _context.Compare.AnyAsync(x => x.Id == compare.Id);
+
+            if (!hasAny)
+            {
+                throw new Exception("Id not found");
+            }
+
+            try
+            {
+                _context.Update(compare);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            try
+            {
+                var obj = await _context.Compare.FindAsync(id);
+                _context.Compare.Remove(obj);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                throw new Exception (e.Message);
+            }
+        }
     }
 }

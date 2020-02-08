@@ -1,0 +1,74 @@
+﻿@model AdmNerdGo.Models.ViewModels.CompareFormViewModel
+
+@{
+    ViewData["Title"] = "Comparacao";
+}
+
+<style>
+    ul li {
+        list-style: none;
+    }
+</style>
+
+<section class="corpo">
+    <div class="produto-selecionado">
+        @foreach (var item in Model.Produtos)
+        {
+            <div style="margin: 0 auto; width:300px">
+                <div>
+                    @{
+                        var base64Produto = Convert.ToBase64String(item.Imagem);
+                        var imgProduto = string.Format("data:image/gif;base64,{0}", base64Produto);
+                    }
+                    <img style="max-width:200px; max-height:200px" src='@imgProduto' />
+                </div>
+                <div>
+                    @{
+                        var descricaoProduto = item.Descricao;
+                    }
+                    <p>@descricaoProduto</p>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="corpo-lojas">
+    <div class="compara-lojas">
+        @foreach (var item in Model.ListCompare)
+        {
+            <div class="lista-lojas">
+                <ul class="loja" id="loja-menor-preco">
+                    @{
+                        var imagem = Model.Lojas.Where(x => x.Id == item.LojaId).Select(x => x.Logo).ToList();
+                        var base64Loja = Convert.ToBase64String(imagem[0]);
+                        var imgLoja = string.Format("data:image/gif;base64,{0}", base64Loja);
+                    }
+
+                    <li class="imagem-loja" id="">
+                        <img src='@imgLoja' alt="@item.Loja.Nome" />
+                    </li>
+
+                    <li class="preco-loja" id="">
+                        <p>a vista por</p>
+                        @{
+                            var preco = item.Preco.ToString("C");
+                        }
+                        <span>@preco</span>
+                    </li>
+
+                    <li class="parcela-loja" id="">
+                        @{
+                            var parcelamento = item.Parcelamento;
+                        }
+                        <span>@parcelamento</span>
+                    </li>
+                </ul>
+            </div>
+
+            @*<a class="btn-sm btn-primary">Ir a loja</a>*@
+            <a asp-controller="Compare" asp-action="Edit" asp-route-id="@item.Id" class="btn-sm btn-secondary">Editar</a>
+            <a asp-controller="Compare" asp-action="Delete" asp-route-id="@item.Id" asp-route-idproduto="@item.ProdutoId" class="btn-sm btn-danger">Excluir</a>
+        }
+    </div>
+</section>

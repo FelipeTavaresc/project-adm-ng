@@ -9,7 +9,8 @@
         display: inline-block;
         margin-left: 1%
     }
-    .links{
+
+    .links {
         margin-left: 20%;
     }
 </style>
@@ -36,28 +37,20 @@
         <div class="row">
             @foreach (var item in Model)
             {
-                <div class="col-xs-2 col-md-3" id="produto-destaque">
-                    <a asp-area="" asp-controller="Compare" asp-action="Index">
-                        <a asp-action="Edit" asp-route-id="@item.Id">Editar</a>
-                        <div id="produto-colecionaveis">
+                <div class="col-xs-2 col-md-3">
+                    <a asp-area="" asp-controller="Compare" asp-action="Comparacao">
+                        <div class="card" style="width: 18rem;">
                             @{
                                 var base64 = Convert.ToBase64String(item.Imagem);
                                 var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                             }
 
-                            <div class="imagem-produto">
-                                <img src='@imgSrc' style="max-width:200px; max-height:200px">
+                            <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
+                            <div class="card-body">
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
+                                <a asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id" class="btn btn-secondary">Comparação</a>
                             </div>
-
-                            <div class="titulo-produto">
-                                <p>@Html.DisplayFor(modelItem => item.Descricao)</p>
-                            </div>
-
-                            <div class="preco">
-                                <p> a partir de</p>
-                                <p><span>R$ @Html.DisplayFor(modelItem => item.Preco)</span></p>
-                            </div>
-
                         </div>
                     </a>
                 </div>

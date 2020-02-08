@@ -7,7 +7,11 @@
 <style>
     ul li {
         display: inline-block;
-        margin-left: 1%
+        margin-left: 1%;
+    }
+
+    .card-text {
+        text-decoration: none;
     }
 
     .links {
@@ -35,27 +39,21 @@
 <section id="corpo" class="container">
     <div id="produtos-destaques" class="container">
         <div class="row">
-            @foreach (var item in Model)
+            @foreach (var item in Model.Take(1))
             {
-                <div class="col-xs-2 col-md-3" id="produto-destaque">
+                <div class="col-xs-2 col-md-3">
                     <a asp-area="" asp-controller="Compare" asp-action="Index">
-                        <div id="produto-colecionaveis">
+                        <div class="card" style="width: 18rem;">
                             @{
                                 var base64 = Convert.ToBase64String(item.Imagem);
                                 var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                             }
 
-                            <div class="imagem-produto">
-                                <img src='@imgSrc' style="max-width:200px; max-height:200px">
-                            </div>
-
-                            <div class="titulo-produto">
-                                <p>@Html.DisplayFor(modelItem => item.Descricao)</p>
-                            </div>
-
-                            <div class="preco">
-                                <p> a partir de</p>
-                                <p><span>R$ @Html.DisplayFor(modelItem => item.Preco)</span></p>
+                            <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
+                            <div class="card-body">
+                                
+                                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
                             </div>
                         </div>
                     </a>
