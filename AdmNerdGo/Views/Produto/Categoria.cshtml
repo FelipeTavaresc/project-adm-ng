@@ -32,30 +32,37 @@
     </ul>
 </div>
 
-<section id="corpo" class="container">
-    <div id="produtos-destaques" class="container">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-xs-2 col-md-3">
-                    <a asp-area="" asp-controller="Compare" asp-action="Comparacao">
-                        <div class="card" style="width: 18rem;">
-                            @{
-                                var base64 = Convert.ToBase64String(item.Imagem);
-                                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
-                            }
+@if (ViewData["MSG_E"] != null)
+{
+    <span>@ViewData["MSG_E"]</span>
+}
 
-                            <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
-                            <div class="card-body">
-                                <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
-                                <a asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id" class="btn btn-secondary">Comparação</a>
-                            </div>
-                        </div>
-                    </a>
+@*<section id="corpo" class="container">*@
+@*<div id="produtos-destaques" class="container">*@
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-xs-2 col-md-3">
+            <a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id">
+                <div class="card" style="width: 18rem;">
+                    @{
+                        var base64 = Convert.ToBase64String(item.Imagem);
+                        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                    }
+
+                    <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-produtoId="@item.Id" asp-route-categoriaId="@item.CategoriaId"><i style="color:red" class="fas fa-trash-alt"></i> </a>
+
+                    </div>
+
                 </div>
-            }
+            </a>
         </div>
-    </div>
-</section>
+    }
+</div>
+@*</div>*@
+@*</section>*@
 

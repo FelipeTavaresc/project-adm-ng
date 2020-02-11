@@ -63,7 +63,7 @@ namespace AdmNerdGo.Controllers
             {
                 return View("Loja não encontrada");
             }
-            return View();
+            return View(obj);
         }
 
         [HttpPost]

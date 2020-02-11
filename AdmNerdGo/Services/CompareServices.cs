@@ -31,13 +31,22 @@ namespace AdmNerdGo.Services
             return await result.ToListAsync();
         }
 
-        public async Task<List<Produto>> FindProductByIdAsync(int id)
+        public List<Compare> FindComparationByProductId(int productId)
+        {
+            var result = from obj in _context.Compare select obj;
+
+            result = result.Where(x => x.ProdutoId == productId);
+
+            return result.ToList();
+        }
+
+        public List<Produto> FindProductByIdAsync(int id)
         {
             var result = from obj in _context.Produto select obj;
 
             result = result.Where(x => x.Id == id);
 
-            return await result.ToListAsync();
+            return result.ToList();
         }
 
         public async Task<List<Loja>> FindStoreByIdAsync(int productId)

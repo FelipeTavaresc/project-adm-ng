@@ -16,11 +16,13 @@ namespace AdmNerdGo.Controllers
     {
         private readonly ProdutoServices _produtoServices;
         private readonly CategoriaServices _categoriaServices;
+        private readonly CompareServices _compareServices;
 
-        public ProdutoController(ProdutoServices produtoServices, CategoriaServices categoriaServices)
+        public ProdutoController(ProdutoServices produtoServices, CategoriaServices categoriaServices, CompareServices compareServices)
         {
             _produtoServices = produtoServices;
             _categoriaServices = categoriaServices;
+            _compareServices = compareServices;
         }
 
         public async Task<IActionResult> Index()
@@ -105,6 +107,19 @@ namespace AdmNerdGo.Controllers
             {
                 throw new Exception(e.Message);
             }
+        }
+
+        public IActionResult Delete(int produtoId, int categoriaId)
+        {
+            var comparacao = _compareServices.FindComparationByProductId(produtoId);
+            if (comparacao.Count > 0)
+            {
+                ViewData["MSG_E"] = "Este produto possui comparações";
+                return RedirectToAction(nameof(Categoria), new { id = categoriaId });
+            }
+
+            _produtoServices.Delete(produtoId);
+            return RedirectToAction(nameof(Categoria), new { id = categoriaId });
         }
 
     }

@@ -29,6 +29,9 @@
                     <p>@descricaoProduto</p>
                 </div>
             </div>
+            <a asp-controller="Compare" asp-action="Create" asp-route-id="@item.Id" class="btn-sm btn-primary">
+                Adicionar comparação
+            </a>
         }
     </div>
 </section>

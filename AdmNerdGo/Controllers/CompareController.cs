@@ -29,7 +29,7 @@ namespace AdmNerdGo.Controllers
 
         public async Task<IActionResult> Comparacao(int? id)
         {
-            var produto = await _compareServices.FindProductByIdAsync(id.Value);
+            var produto = _compareServices.FindProductByIdAsync(id.Value);
             var loja = await _compareServices.FindStoreByIdAsync(produto[0].Id);
             var comparacao = await _compareServices.ListComparationByProductId(id.Value);
 
@@ -38,16 +38,18 @@ namespace AdmNerdGo.Controllers
             return View(viewModel);
         }
 
-        public async Task<IActionResult> Create()
+        [HttpGet]
+        public async Task<IActionResult> Create(int id)
         {
             var lojas = await _lojaServices.FindAllAsync();
-            var produtos = await _produtoServices.FindAllAsync();
+            var produto = await _produtoServices.FindByIdAsync(id);
             var viewModel = new CompareFormViewModel
             {
-                Produtos = produtos,
-                Lojas = lojas
+                Lojas = lojas,
+                Produto = produto,
             };
 
+            TempData["id-prod"] = produto.Id;
             return View(viewModel);
         }
 
@@ -68,14 +70,14 @@ namespace AdmNerdGo.Controllers
             }
 
             await _compareServices.InsertAsync(compare);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Comparacao), new { id = compare.ProdutoId });
         }
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             var comparacao = await _compareServices.FindComparationById(id);
-            var loja = await _lojaServices.FindByIdAsync(comparacao.LojaId);
+            var loja = await _lojaServices.FindByIdListAsync(comparacao.LojaId);
             var produto = await _produtoServices.FindByIdAsync(comparacao.ProdutoId);
             var viewModel = new CompareFormViewModel { Compare = comparacao, Lojas = loja, Produto = produto };
             return View(viewModel);
@@ -92,7 +94,7 @@ namespace AdmNerdGo.Controllers
             try
             {
                 await _compareServices.UpdateAsync(compare);
-                return RedirectToAction(nameof(Comparacao),  new { id = compare.ProdutoId });
+                return RedirectToAction(nameof(Comparacao), new { id = compare.ProdutoId });
             }
             catch (Exception e)
             {

@@ -57,5 +57,19 @@ namespace AdmNerdGo.Services
                 throw new Exception(e.Message);
             }
         }
+
+        public void Delete(int id)
+        {
+            try
+            {
+                var obj = _context.Produto.Find(id);
+                _context.Produto.Remove(obj);
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
     }
 }

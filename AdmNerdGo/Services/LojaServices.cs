@@ -43,9 +43,14 @@ namespace AdmNerdGo.Services
             }
         }
 
-        public async Task<List<Loja>> FindByIdAsync(int id)
+        public async Task<List<Loja>> FindByIdListAsync(int id)
         {
             return await _context.Loja.Where(x => x.Id == id).ToListAsync();
+        }
+
+        public async Task<Loja> FindByIdAsync(int id)
+        {
+            return await _context.Loja.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
     }
 }
