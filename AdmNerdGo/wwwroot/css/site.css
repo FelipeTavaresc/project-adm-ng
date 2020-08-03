@@ -10,16 +10,524 @@ a.navbar-brand {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    scroll-behavior: smooth;
 }
+
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
+ul li {
+    display: inline-block;
+    margin-left: 1%
+}
+
+.links {
+    margin-left: 20%;
+}
+
+/*/////////////cabeçalho////////////////*/
+.cabecalho {
+    background-color: orange;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: black;
+}
+
+.dropdown-item, .dropdown-item {
+    color: #fff;
+    text-decoration: none;
+    background-color: black;
+}
+
+    .dropdown-item:hover, .dropdown-item:focus {
+        width: 156px;
+    }
+
+.navbar-expand-sm .navbar-nav .dropdown-menu {
+    position: absolute;
+    background-color: black;
+}
+
+/*////////////pagina home////////////////*/
+.titulo-home h1 {
+    color: #06033e;
+}
+/*////////pagina categorias e subcategorias/////////*/
+.titulo-cat-sub {
+    float: left;
+    margin-top: 5%;
+}
+
+.titulo-cat-sub h1 {
+    font-size: 2.4em;
+    color: #06033e;
+}
+
+.titulo-categoria {
+    width: 100%;
+    float: left;
+    margin-left: 1%;
+    margin-top: 10%;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.botao-criar-cat {
+    color: black;
+    background-color: orange;
+    border-color: orange;
+    float: right;
+    margin-right: 0%;
+    width: 150px;
+    height: 46px;
+    border-radius: 10px;
+    margin-top: -4.5%;
+    margin-bottom: -4.5%;
+    padding: 1% 2%;
+}
+
+    .botao-criar-cat a {
+        color: black;
+    }
+
+    .botao-criar-cat:hover {
+        opacity: 70%;
+    }
+
+    .table {
+        width: 100%;
+        display: inline-table;
+        margin-top: 0%;
+    }
+
+.editar-categoria {
+    background-color: red;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+    .editar-categoria a {
+        color: #fff;
+    }
+
+    .editar-categoria:hover {
+        opacity: 80%;
+    }
+
+.titulo-subcategoria {
+    margin-top: 5%;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.selecao-categorias {
+    width: 20%;
+    margin-top: 2%;
+}
+
+.botao-criar-sub {
+    width: 165px;
+    height: 46px;
+    border-radius: 10px;
+    background-color: orange;
+    text-align: center;
+    padding: 1% 1% 1.5%;
+    margin-left: 85.2%;
+    margin-top: -1%;
+    margin-bottom: 0%;
+}
+
+    .botao-criar-sub a {
+        color: black;
+    }
+.lista-subcategorias {
+    margin-top: 0.5%;
+}
+
+/*//////////////pagina criar categoria///////////////*/
+.titulo-criar-cat h1 {
+    font-size: 2.4em;
+    color: #06033e;
+}
+.botao-salvar-cat {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: -4.5%;
+    padding: 3% 4% 3.5%;
+}
+    .botao-salvar-cat:hover {
+        color: #fff;
+        background-color: orange;
+        border-color: orange;
+        opacity: 80%;
+    }
+.botao-voltar-cat {
+    width: 80px;
+    height: 50px;
+    background-color: #06033e;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: -14%;
+    padding: 3.5% 4%;
+}
+
+    .botao-voltar-cat a {
+        color: #fff;
+    }
+.botao-voltar-cat:hover {
+    opacity: 80%;
+}
+
+/*/////////////pagina editar categoria///////////////*/
+.titulo-editar-cat h1 {
+    font-size: 2.4em;
+    color: #06033e;
+}
+
+.botao-editar-cat {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 3%;
+    margin-bottom: -4.5%;
+    padding: 3% 4% 3.5%;
+}
+
+    .botao-editar-cat:hover {
+        color: #fff;
+        background-color: orange;
+        border-color: orange;
+        opacity: 80%;
+    }
+
+.voltar-editar-cat {
+    width: 80px;
+    height: 50px;
+    background-color: #06033e;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 30%;
+    margin-top: -14%;
+    padding: 3.5% 4%;
+}
+
+    .voltar-editar-cat a {
+        color: #fff;
+    }
+
+    .voltar-editar-cat:hover {
+        opacity: 80%;
+    } 
+/*/////////////////pagina lojas///////////////////*/
+.titulo-lojas {
+    float: left;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+    .titulo-lojas h1 {
+        color: #06033e;
+    }
+
+.botao-criar-loja {
+    display: inline-block;
+    width: 160px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: orange;
+    text-align: center;
+    padding: 1%;
+    margin-left: 85%;
+    margin-bottom: 3%;
+    margin-top: -1%;
+}
+
+    .botao-criar-loja a {
+        color: black;
+    }
+
+    .botao-criar-loja:hover {
+        opacity: 70%;
+    }
+
+.tabela-lojas {
+    margin-top: -2%;
+    border: none;
+    display: inline-table;
+    width: 100%;
+}
+
+.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.linha-loja-logo {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.linha-loja {
+    height: 110px;
+    width: 127%;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.figura-loja img {
+    max-width: 110px;
+    max-height: 80px;
+    display: inline-block;
+    height: auto;
+    cursor: pointer;
+    overflow: hidden;
+    margin-top: 2%;
+}
+
+.botao-editar-loja {
+    width: 80px;
+    height: 50px;
+    background-color: yellowgreen;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    display: inline-block;
+    margin-top: 8%;
+    margin-left: 46%;
+}
+
+.botao-excluir-loja {
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: red;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    margin-top: 8%;
+    margin-left: 5%;
+}
+
+    .botao-editar-loja a, .botao-excluir-loja a {
+        color: #fff;
+    }
+
+    .botao-editar-loja:hover, .botao-excluir-loja:hover {
+        opacity: 70%;
+    }
+/*/////////////////pagina criar loja//////////////////*/
+.titulo-ciar-loja {
+    font-size: 2.4em;
+    color: #06033e;
+}
+
+.botao-salvar-loja {
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+    .botao-salvar-loja:hover {
+        background-color: orange;
+        border-color: orange;
+        opacity: 70%;
+    }
+
+/*///////////////pagina editar loja//////////////////*/
+    .titulo-editar-loja h1 {
+        font-size: 2.4em;
+        color: #06033e;
+    }
+
+.botao-edit-loja {
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+    .botao-edit-loja:hover {
+        background-color: orange;
+        border-color: orange;
+        opacity: 70%;
+    }
+
+.botao-voltar-lojas {
+    margin-top: -18.6%;
+    margin-left: 25%;
+    width: 85px;
+    height: 50px;
+    background-color: #06033e;
+    border-radius: 10px;
+    text-align: center;
+    padding: 3.5% 5% 4%;
+}
+
+    .botao-voltar-lojas a {
+        color: #fff;
+    }
+
+    .botao-voltar-lojas:hover {
+        opacity: 70%;
+    }
+    /*//////////////pagina produtos//////////////////////*/
+    .categoria-produto {
+        float: left;
+        margin-top: 5%;
+    }
+
+    .categoria-produto h2 {
+        font-size: 2.4em;
+        color: #06033e;
+    }
+
+.botao-cadastrar-produto a {
+    display: inline-block;
+    color: black;
+    background-color: orange;
+    border-color: orange;
+    float: right;
+    margin-right: -500%;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 60%;
+    margin-bottom: 5%;
+    padding: 11px 20px 20px;
+}
+
+    .botao-cadastrar-produto p {
+        margin-top: 1%;
+    }
+
+.botao-cadastrar-produto a:link {
+    color: black;
+    background-color: orange;
+    border-color: orange;
+    float: right;
+    margin-right: -500%;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 60%;
+    margin-bottom: 5%;
+    padding: 11px 20px 20px;
+}
+
+.botao-cadastrar-produto a:visited {
+    color: black;
+    background-color: orange;
+    border-color: orange;
+    float: right;
+    margin-right: -500%;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    margin-top: 60%;
+    margin-bottom: 5%;
+    padding: 11px 20px 20px;
+}
+
+    .botao-cadastrar-produto a:hover {
+        color: #fff;
+        background-color: black;
+        border-color: black;
+    }
+
+    .botao-cadastrar-produto a:active {
+        color: #fff;
+        background-color: black;
+        border-color: black;
+    }
+
+.menu-subcategorias {
+    width: 100%;
+    text-align: center;
+}
+
+.subcategorias {
+    margin-left: -5%;
+    text-align: center;
+}
+
+    .subcategorias li a {
+        color: black;
+    }
+
+.produtos {
+    margin-top: 3%;
+}
+
+.produto {
+    margin: 1% 0%;
+}
+
+.card {
+    padding: 2%;
+    display: block;
+    float: left;
+    width: 260px;
+    min-height: 350px;
+    max-height: 350px;
+}
+
+.figure-produto-cat {
+    height: 190px;
+}
+
+.card-img-top {
+    max-width: 200px;
+    max-height: 190px;
+    display: inline-block;
+    height: auto;
+    margin: 0 auto;
+    margin-left: 10%;
+    cursor: pointer;
+    vertical-align: middle;
+    overflow: hidden;
+    padding: 2%;
+}
+
+.card-text {
+    line-height: 1.2em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-height: 58px;
+    max-height: 58px;
+}
+
+.form-check {
+    float: left;
+    margin-top: 10%;
+    color: #0309a2;
+}
+
+.card-body i {
+    margin-left: 11%;
+    font-size: 26px;
+    float: left;
+    margin-right: -4%;
+    margin-top: 10%;
+}
+
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
 .border-bottom {
   border-bottom: 1px solid #e5e5e5;
@@ -34,12 +542,242 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+/*/////////////pagina cadastrar produto////////////////////*/
+.cadastrar-produto h1 {
+    font-size: 2.4em;
+    color: #06033e;
 }
+
+.botao-criar-produto {
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+    .botao-criar-produto:hover {
+        background-color: orange;
+        border-color: orange;
+        opacity: 80%;
+    }
+
+/*////////////pagina editar produto//////////////////////////*/
+.editar-produto h1 {
+    font-size: 2.4em;
+    color: #06033e;
+}
+
+.destaque {
+    margin-top: 0%;
+}
+
+.botao-salvar-edicao {
+    margin-top: 15%;
+    margin-left: -26%;
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+    .botao-salvar-edicao:hover {
+        background-color: orange;
+        border-color: orange;
+        opacity: 80%;
+    }
+
+    .botao-voltar-produtos {
+        margin-top: -18.6%;
+        margin-left: 25%;
+        width: 85px;
+        height: 50px;
+        background-color: #06033e;
+        border-radius: 10px;
+        text-align: center;
+        padding: 3% 5% 4%;
+    }
+
+    .botao-voltar-produtos a {
+        color: #fff;
+    }
+
+    .botao-voltar-produtos:hover {
+        opacity: 80%;
+    }
+
+
+/*////////////////pagina compacarão do produto//////////////////*/
+.titulo-comparacao {
+    float: left;
+    margin-top: -10%;
+    margin-left: -5%;
+}
+
+    .titulo-comparacao h2 {
+        font-size: 2.4em;
+        color: #06033e;
+    }
+
+.produto-selecionado {
+margin-top: 15%;
+}
+
+.btn-ad-comp {
+    background-color: #ffa500;
+    padding: 1% 2% 1.5%;
+    font-size: 1.1em;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 2%;
+}
+
+    .btn-ad-comp:hover {
+        background-color: #ffa500;
+        opacity: 60%;
+    }
+
+    .btn-ad-comp a:active {
+        background-color: #ffa500;
+    }
+
+
+.lista-lojas {
+    padding: 0%;
+}
+
+    .lista-lojas ul {
+        display: inline-block;
+        padding: 0%;
+        height: 140px;
+        margin-top: 2%;
+    }
+
+.imagem-loja {
+    width: 28%;
+    padding: 1%;
+    height: 130px;
+}
+
+    .imagem-loja .logo-loja {
+        max-height: 80px;
+        max-width: 220px;
+        display: inline-block;
+        height: auto;
+        cursor: pointer;
+        vertical-align: middle;
+        overflow: hidden;
+    }
+
+.btn-secondary {
+    background-color: #03dd04;
+    color: #fff;
+    padding: 0.7% 1.5% 1%;
+}
+
+    .btn-secondary:hover {
+        background-color: #03dd04;
+        opacity: 60%;
+    }
+
+.btn-danger {
+    color: #fff;
+    padding: 0.7% 1.5% 1%;
+    background-color: red;
+}
+
+   .btn-danger:hover {
+       background-color: red;
+       opacity: 60%;
+   }
+
+/*//////////pagina criação de comparação////////////*/
+.titulo-cad-comparacao h2 {
+    font-size: 2.4em;
+    color: #06033e;
+}
+
+.btn-criar-comparacao .btn-primary {
+    color: #fff;
+    background-color: orange;
+    border-color: orange;
+    padding: 2.5% 6% 3.5%;
+    border-radius: 10px;
+}
+
+    .btn-criar-comparacao .btn-primary:hover {
+        opacity: 80%;
+    }
+
+    .botao-voltar {
+        margin-top: -17.9%;
+        margin-left: 33%;
+        width: 85px;
+        height: 47px;
+        background-color: #06033e;
+        border-radius: 10px;
+        text-align: center;
+        padding: 3% 5% 4%;
+    }
+
+.botao-voltar a {
+    color: #fff;
+}
+
+.botao-voltar:hover {
+    opacity: 80%;
+}
+
+/*///////////pagina editar comparação//////////////*/
+.titulo-editar-comparacao {
+    margin-top: 5%;
+}
+
+    .titulo-editar-comparacao h4 {
+        font-size: 2.4em;
+        color: #06033e;
+    }
+
+.botao-editar {
+    background-color: orange;
+    border-color: orange;
+    width: 80px;
+    height: 50px;
+    border-radius: 10px;
+}
+
+    .botao-editar:hover {
+        background-color: orange;
+        border-color: orange;
+        opacity: 80%;
+    }
+
+.botao-voltar-comparacao {
+    width: 80px;
+    height: 50px;
+    background-color: #06033e;
+    border-radius: 10px;
+    text-align: center;
+    padding: 3.5% 4% 3%;
+    margin-left: 25%;
+    margin-top: -18.7%;
+}
+
+    .botao-voltar-comparacao a {
+        color: #fff; 
+    }
+
+        .botao-voltar-comparacao:hover, .botao-voltar-comparacao a:hover {
+            opacity: 80%;
+        }
+
+
+/* Sticky footer styles -------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
 
 body {
   /* Margin bottom by footer height */

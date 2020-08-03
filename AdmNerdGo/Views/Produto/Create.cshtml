@@ -4,24 +4,25 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
+<div class="cadastrar-produto">
+    <h1>Cadastrar novo produto</h1>
+</div>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Produto.Descricao" class="control-label"></label>
+                <label asp-for="Produto.Descricao" class="control-label">Título produto</label>
                 <input asp-for="Produto.Descricao" class="form-control" />
                 <span asp-validation-for="Produto.Descricao" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Produto.Preco" class="control-label"></label>
-                <input asp-for="Produto.Preco" class="form-control" />
-                <span asp-validation-for="Produto.Preco" class="text-danger"></span>
-            </div>
+            @*<div class="form-group">
+            <label asp-for="Produto.Preco" class="control-label"></label>
+            <input asp-for="Produto.Preco" class="form-control" />
+            <span asp-validation-for="Produto.Preco" class="text-danger"></span>
+            </div>*@
 
             <div class="form-group">
                 <label asp-for="Produto.Imagem" class="control-label"></label>
@@ -30,12 +31,21 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Produto.CategoriaId" class="control-label"></label>
+                <label asp-for="Produto.Categoria" class="control-label"></label>
                 <select asp-for="Produto.CategoriaId" asp-items="@(new SelectList(Model.Categorias,"Id","Descricao"))" class="form-control"></select>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label for="exampleFormControlSelect1">Subcategorias</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Action Figure</option>
+                    <option>Funko</option>
+                    <option>Veículo</option>
+                </select>
+            </div>
+
+            <div>
+                <a asp-action="Categoria"><input type="submit" value="Criar" class=" botao-criar-produto btn btn-primary" /></a>
             </div>
         </form>
     </div>

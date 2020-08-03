@@ -3,8 +3,10 @@
 @{
     ViewData["Title"] = "Create";
 }
+<div class="titulo-cad-comparacao">
+    <h2>Adicionar comparação</h2>
+</div>
 
-<h2>Cadastrar comparação</h2>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +17,7 @@
                 <select asp-for="Compare.LojaId" asp-items="@(new SelectList(Model.Lojas,"Id","Nome"))" class="form-control"></select>
             </div>
             <div class="form-group">
-                @{ 
+                @{
                     var idprod = TempData["id-prod"];
                 }
                 <input hidden asp-for="Compare.ProdutoId" value="@idprod" class="form-control" />
@@ -35,14 +37,16 @@
                 <input asp-for="Compare.Link" class="form-control" />
                 <span asp-validation-for="Compare.Link" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="btn-criar-comparacao form-group">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+            </div>
+
+            <div class="botao-voltar">
+                <a asp-action="Comparacao">Voltar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

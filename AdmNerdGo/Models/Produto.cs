@@ -14,5 +14,6 @@ namespace AdmNerdGo.Models
         public byte[] Imagem { get; set; }
         public Categoria Categoria { get; set; }
         public int CategoriaId { get; set; }
+        public bool Destaque { get; set; }
     }
 }

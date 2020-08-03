@@ -11,10 +11,14 @@
 </style>
 
 <section class="corpo">
+    <div class="titulo-comparacao">
+        <h2>Comparacao do produto</h2>
+    </div>
+
     <div class="produto-selecionado">
         @foreach (var item in Model.Produtos)
         {
-            <div style="margin: 0 auto; width:300px">
+            <div style="margin: 0 auto; width:460px">
                 <div>
                     @{
                         var base64Produto = Convert.ToBase64String(item.Imagem);
@@ -29,7 +33,7 @@
                     <p>@descricaoProduto</p>
                 </div>
             </div>
-            <a asp-controller="Compare" asp-action="Create" asp-route-id="@item.Id" class="btn-sm btn-primary">
+            <a asp-controller="Compare" asp-action="Create" asp-route-id="@item.Id" class="btn-ad-comp btn-sm btn-primary">
                 Adicionar comparação
             </a>
         }
@@ -49,7 +53,7 @@
                     }
 
                     <li class="imagem-loja" id="">
-                        <img src='@imgLoja' alt="@item.Loja.Nome" />
+                        <img class="logo-loja" src='@imgLoja' alt="@item.Loja.Nome" />
                     </li>
 
                     <li class="preco-loja" id="">

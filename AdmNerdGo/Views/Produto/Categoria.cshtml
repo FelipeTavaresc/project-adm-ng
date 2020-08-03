@@ -4,33 +4,26 @@
     ViewData["Title"] = "Colecionáveis";
 }
 
-<style>
-    ul li {
-        display: inline-block;
-        margin-left: 1%
-    }
 
-    .links {
-        margin-left: 20%;
-    }
-</style>
+<div class="categoria-produto">
+    <h2>Colecionáveis</h2>
+</div>
 
-<div class="row">
-    <p class="col-md-9">
+<div class="botao-cadastrar-produto row">
+    <p class="">
         <a class="btn btn-primary" asp-action="Create">Cadastrar novo</a>
     </p>
 </div>
 
-<div class="links">
-    <ul>
-        <li><a asp-controller="Produto" asp-route-id="1" asp-action="Categoria">Colecionáveis</a></li>
-        <li><a asp-controller="Produto" asp-route-id="2" asp-action="Categoria">Decoração</a></li>
-        <li><a asp-controller="Produto" asp-route-id="3" asp-action="Categoria">Games</a></li>
-        <li><a asp-controller="Produto" asp-route-id="4" asp-action="Categoria">Livros</a></li>
-        <li><a asp-controller="Produto" asp-route-id="5" asp-action="Categoria">Moda</a></li>
-        <li><a asp-controller="Produto" asp-route-id="6" asp-action="Categoria">Destaques/Home</a></li>
+<div class="menu-subcategorias">
+    <h4>Subcategorias</h4>
+    <ul class="subcategorias">
+        <li><a href="#">Action Figure</a></li>
+        <li><a href="#">Funko</a></li>
+        <li><a href="#">Veículo</a></li>
     </ul>
 </div>
+
 
 @if (ViewData["MSG_E"] != null)
 {
@@ -39,27 +32,33 @@
 
 @*<section id="corpo" class="container">*@
 @*<div id="produtos-destaques" class="container">*@
-<div class="row">
+<div class="produtos row">
     @foreach (var item in Model)
     {
-        <div class="col-xs-2 col-md-3">
-            <a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id">
-                <div class="card" style="width: 18rem;">
+        <div class=" produto col-xs-2 col-md-3">
+            @*<a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id">*@
+                <div class="card">
                     @{
                         var base64 = Convert.ToBase64String(item.Imagem);
                         var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
                     }
-
-                    <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
+                    <div class="figure-produto-cat">
+                        <img class="card-img-top" src="@imgSrc" alt="Imagem de capa do card">
+                    </div>
                     <div class="card-body">
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>
-                        <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Destaque</label>
+                        </div>
+                        <a asp-action="Edit" asp-route-id="@item.Id"><i style="color:lawngreen" class="fas fa-edit"></i></a>
+                        <a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id"><i style="color:orange" class="fas fa-file-medical"></i></a>
                         <a asp-action="Delete" asp-route-produtoId="@item.Id" asp-route-categoriaId="@item.CategoriaId"><i style="color:red" class="fas fa-trash-alt"></i> </a>
 
                     </div>
 
                 </div>
-            </a>
+            @*</a>*@
         </div>
     }
 </div>

@@ -91,5 +91,11 @@ namespace AdmNerdGo.Controllers
                 throw new Exception(e.Message);
             }
         }
+
+        public async Task<IActionResult> Delete(int lojaId)
+        {
+            var loja = await _lojaServices.FindByIdAsync(lojaId);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
