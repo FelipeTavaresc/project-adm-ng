@@ -64,9 +64,9 @@ namespace AdmNerdGo.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Categoria(int id)
+        public IActionResult Categoria(int id, int? pageNumber)
         {
-            var list = await _produtoServices.FindByCategoryId(id);
+            var list = _produtoServices.FindByCategoryId(id, pageNumber);
             return View(list);
         }
 

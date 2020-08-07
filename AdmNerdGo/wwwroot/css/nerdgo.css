@@ -227,7 +227,7 @@ footer .row-preto {
 	margin-top: 17px;
 	color: #606060;
 	text-align: center;
-}*/
+}
 
 
 /*configuração HOME*/
@@ -471,18 +471,6 @@ footer .row-preto {
         margin-bottom: 0;
     }
 
-/* .imagem-loja {
-    width: 100%;
-    padding: 2%;
-}
-
-    .imagem-loja img {
-        max-width: 120px;
-        max-height: 60px;
-        min-width: 61px;
-        min-height: 60px;
-    } */
-
 .preco-loja {
     width: 48%;
     line-height: 1.5em;
@@ -548,19 +536,6 @@ footer .row-preto {
     .lista-lojas ul {
         text-align: center;
     }
-
-    /* .imagem-loja {
-        width: 35%;
-        padding: 2%;
-        margin-top: 5%;
-    }
-
-        .imagem-loja img {
-            max-width: 110px;
-            max-height: 70px;
-            min-width: 90px;
-            min-height: 50px;
-        } */
 
     .preco-loja {
         width: 30%;

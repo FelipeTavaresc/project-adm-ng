@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace AdmNerdGo.Services
 {
     public class ProdutoServices
     {
         private readonly AdmNerdGoContext _context;
+        private const int ITEM_PER_PAGE = 12;
 
         public ProdutoServices(AdmNerdGoContext context)
         {
@@ -22,6 +24,12 @@ namespace AdmNerdGo.Services
             return await _context.Produto.ToListAsync();
         }
 
+        public IPagedList<Produto> FindAll(int? pageNumber)
+        {
+            int pageNumberAux = pageNumber ?? 1;
+            return  _context.Produto.ToPagedList<Produto>(pageNumberAux, ITEM_PER_PAGE);
+        }
+
         public async Task InsertAsync(Produto obj)
         {
             _context.Add(obj);
@@ -31,6 +39,12 @@ namespace AdmNerdGo.Services
         public async Task<List<Produto>> FindByCategoryId(int id)
         {
             return await _context.Produto.Where(x => x.Categoria.Id == id).ToListAsync();
+        }
+
+        public IPagedList<Produto> FindByCategoryId(int id, int? pageNumber)
+        {
+            int pageNumberAux = pageNumber ?? 1;
+            return _context.Produto.Where(x => x.Categoria.Id == id).ToPagedList<Produto>(pageNumberAux, ITEM_PER_PAGE);
         }
 
         public async Task<Produto> FindByIdAsync(int id)

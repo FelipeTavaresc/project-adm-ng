@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdmNerdGo.Models.Produto>
+﻿@model X.PagedList.IPagedList<AdmNerdGo.Models.Produto>
 
 @{
     ViewData["Title"] = "Produto";
@@ -61,6 +61,7 @@
                     </a>
                 </div>
             }
+            @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("Index", new { pageNumber }))
         </div>
     </div>
 </section>

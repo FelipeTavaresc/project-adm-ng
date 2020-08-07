@@ -18,6 +18,7 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/lib/fontawesome/css/all.css" rel="stylesheet" />
+    <link href="~/css/pagedList/PagedList.css" rel="stylesheet" />
 </head>
 <body>
     <header class="cabecalho">
@@ -42,11 +43,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" asp-area="" asp-controller="Produto" asp-route-id="1" asp-action="Categoria">Produtos</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-controller="Produto" asp-route-id="1" asp-action="Categoria">Colecionáveis</a></li>
-                                <li><a class="dropdown-item" asp-controller="Produto" asp-route-id="2" asp-action="Categoria">Decoração</a></li>
-                                <li><a class="dropdown-item" asp-controller="Produto" asp-route-id="3" asp-action="Categoria">Games</a></li>
-                                <li><a class="dropdown-item" asp-controller="Produto" asp-route-id="4" asp-action="Categoria">Livros</a></li>
-                                <li><a class="dropdown-item" asp-controller="Produto" asp-route-id="5" asp-action="Categoria">Moda</a></li>
+                                <li><a class="dropdown-item" asp-controller="Colecionaveis" asp-action="Index">Colecionáveis</a></li>
+                                <li><a class="dropdown-item" asp-controller="Decoracao" asp-action="Index">Decoração</a></li>
+                                <li><a class="dropdown-item" asp-controller="Games"  asp-action="Index">Games</a></li>
+                                <li><a class="dropdown-item" asp-controller="Livros" asp-action="Index">Livros</a></li>
+                                <li><a class="dropdown-item" asp-controller="Moda" asp-action="Index">Moda</a></li>
                             </ul>
                         </li>
                     </ul>

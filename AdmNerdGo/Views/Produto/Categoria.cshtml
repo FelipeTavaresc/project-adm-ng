@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AdmNerdGo.Models.Produto>
+﻿@model X.PagedList.IPagedList<AdmNerdGo.Models.Produto>
 
 @{
     ViewData["Title"] = "Colecionáveis";
@@ -32,11 +32,11 @@
 
 @*<section id="corpo" class="container">*@
 @*<div id="produtos-destaques" class="container">*@
-<div class="produtos row">
-    @foreach (var item in Model)
-    {
-        <div class=" produto col-xs-2 col-md-3">
-            @*<a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id">*@
+    <div class="produtos row">
+        @foreach (var item in Model)
+        {
+            <div class=" produto col-xs-2 col-md-3">
+                @*<a asp-area="" asp-controller="Compare" asp-action="Comparacao" asp-route-id="@item.Id">*@
                 <div class="card">
                     @{
                         var base64 = Convert.ToBase64String(item.Imagem);
@@ -58,10 +58,11 @@
                     </div>
 
                 </div>
-            @*</a>*@
-        </div>
-    }
-</div>
+                @*</a>*@
+            </div>
+        }
+        @Html.PagedListPager((IPagedList)Model, pageNumber => Url.Action("Index", new { pageNumber }))
+    </div>
 @*</div>*@
 @*</section>*@
 
