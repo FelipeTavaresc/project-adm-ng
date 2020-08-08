@@ -5,12 +5,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace AdmNerdGo.Services
 {
     public class LojaServices
     {
         private readonly AdmNerdGoContext _context;
+        private const int ITEM_PER_PAGE = 15;
 
         public LojaServices(AdmNerdGoContext context)
         {
@@ -20,6 +22,12 @@ namespace AdmNerdGo.Services
         public async Task<List<Loja>> FindAllAsync()
         {
             return await _context.Loja.ToListAsync();
+        }
+
+        public IPagedList<Loja> FindAll(int? pageNumber)
+        {
+            int pageNumberAux = pageNumber ?? 1;
+            return _context.Loja.ToPagedList<Loja>(pageNumberAux, ITEM_PER_PAGE);
         }
 
         public async Task InsertAsync(Loja obj)

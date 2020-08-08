@@ -19,9 +19,9 @@ namespace AdmNerdGo.Controllers
             _lojaServices = lojaServices;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int? pageNumber)
         {
-            var list = await _lojaServices.FindAllAsync();
+            var list = _lojaServices.FindAll(pageNumber);
             return View(list);
         }
 
@@ -47,9 +47,7 @@ namespace AdmNerdGo.Controllers
 
             if (!ModelState.IsValid)
             {
-                //var categorias = await _lojaServices.FindAllAsync();
-                //var viewModel = new ProdutoFormViewModel { Produto = produto, Categorias = categorias };
-                //return View(viewModel);
+                //TODO - implementar validação
             }
 
             await _lojaServices.InsertAsync(cliente);
