@@ -1,0 +1,71 @@
+﻿@model AdmNerdGo.Models.ViewModels.ProdutoFormViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="editar-produto">
+    <h1>Editar produto</h1>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Produto.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Produto.Descricao" class="control-label">Título produto</label>
+                <input asp-for="Produto.Descricao" class="form-control" />
+                <span asp-validation-for="Produto.Descricao" class="text-danger"></span>
+            </div>
+
+            @{
+                var base64 = Convert.ToBase64String(Model.Imagem);
+                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+
+            <div class="imagem-produto">
+                <img src='@imgSrc' style="max-width:200px; max-height:200px">
+            </div>
+
+            <div class="form-group">
+                <input hidden asp-for="Produto.Imagem" value="@base64" id="image" class="form-control" />
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Produto.Imagem" class="control-label"></label>
+                <input asp-for="Imagem" type="file" id="image" class="form-control" />
+                <span asp-validation-for="Produto.Imagem" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Produto.CategoriaId" class="control-label">Categoria</label>
+                <select asp-for="Produto.CategoriaId" asp-items="@(new SelectList(Model.Categorias,"Id","Descricao"))" class="form-control"></select>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect1">Subcategoria</label>
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Action Figure</option>
+                    <option>Funko</option>
+                    <option>Veículo</option>
+                </select>
+            </div>
+
+            <div class="destaque form-check">
+                <input type="checkbox" asp-for="Produto.Destaque" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Destaque</label>
+            </div>
+
+            <div class="form-group">
+                <a asp-action="Categoria"><input type="submit" value="Salvar" class="botao-salvar-edicao btn btn-primary" /></a>
+            </div>
+
+            <div class="botao-voltar-produtos">
+                <a asp-action="Index">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
