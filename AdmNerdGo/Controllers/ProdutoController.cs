@@ -7,6 +7,7 @@ using AdmNerdGo.Data;
 using AdmNerdGo.Models;
 using AdmNerdGo.Models.ViewModels;
 using AdmNerdGo.Services;
+using AdmNerdGo.Util;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,17 +42,7 @@ namespace AdmNerdGo.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Produto produto, List<IFormFile> Imagem)
         {
-            foreach (var item in Imagem)
-            {
-                if (item.Length > 0)
-                {
-                    using (var stream = new MemoryStream())
-                    {
-                        await item.CopyToAsync(stream);
-                        produto.Imagem = stream.ToArray();
-                    }
-                }
-            }
+            produto.Imagem = Functions.ConvertImageToByte(Imagem);
 
             if (!ModelState.IsValid)
             {
@@ -61,7 +52,11 @@ namespace AdmNerdGo.Controllers
             }
 
             await _produtoServices.InsertAsync(produto);
-            return RedirectToAction(nameof(Index));
+            var desCategoria = _categoriaServices.FindCategoriaById(produto.CategoriaId).Descricao;
+
+            //return RedirectToAction(nameof(Index));
+            var categoria = Functions.RemoveDiacritics(desCategoria);
+            return RedirectToAction("Index", categoria);
         }
 
         public IActionResult Categoria(int id, int? pageNumber)

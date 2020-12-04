@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AdmNerdGo.Models;
 using AdmNerdGo.Models.ViewModels;
 using AdmNerdGo.Services;
+using AdmNerdGo.Util;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AdmNerdGo.Controllers
@@ -49,12 +52,14 @@ namespace AdmNerdGo.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Produto produto)
+        public async Task<IActionResult> Edit(int id, Produto produto, List<IFormFile> Imagem)
         {
             if (id != produto.Id)
             {
                 return NotFound();
             }
+
+            produto.Imagem = Functions.ConvertImageToByte(Imagem);
 
             try
             {

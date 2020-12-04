@@ -21,5 +21,10 @@ namespace AdmNerdGo.Services
         {
             return await _context.Categoria.OrderBy(x => x.Descricao).ToListAsync();
         }
+
+        public Categoria FindCategoriaById(int id)
+        {
+            return _context.Categoria.Where(x => x.Id == id).FirstOrDefault();
+        }
     }
 }
