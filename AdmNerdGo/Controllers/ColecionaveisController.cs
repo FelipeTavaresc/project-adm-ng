@@ -59,7 +59,10 @@ namespace AdmNerdGo.Controllers
                 return NotFound();
             }
 
-            produto.Imagem = Functions.ConvertImageToByte(Imagem);
+            if (Imagem.Count > 0)
+            {
+                produto.Imagem = Functions.ConvertImageToByte(Imagem);
+            }
 
             try
             {
