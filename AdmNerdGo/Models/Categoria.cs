@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,16 +11,29 @@ namespace AdmNerdGo.Models
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
-        public ICollection<Produto> Produtos { get; set; }
 
-        public Categoria()
-        {
-        }
+        /* 
+         * Nome: Telefone sem fio
+         * Slug: telefone-sem-fio
+         * URL normal: www.lojavirtual.com.br/categoria/5 
+         * URL Amigável e com Slug: www.lojavirtual.com.br/categoria/informatica (Url amigável)
+         */
+        public string Slug { get; set; }
 
-        public Categoria(int id, string descricao)
-        {
-            Id = id;
-            Descricao = descricao;
-        }
+        /*
+         * Auto-relacionamento
+         * 1-Informatica - P:null
+         * - 2-Mouse: P:1
+         * -- 3-Mouse sem fio P:2
+         * -- 4-Mouse Gamer P:2
+         */
+        [Display(Name = "Categoria Pai")]
+        public int? CategoriaPaiId { get; set; }
+
+        /*
+         * ORM - EntityFrameworkCore
+         */
+        [ForeignKey("CategoriaPaiId")]
+        public virtual Categoria CategoriaPai { get; set; }
     }
 }

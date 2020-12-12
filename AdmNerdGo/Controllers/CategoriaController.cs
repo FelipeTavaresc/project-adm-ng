@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdmNerdGo.Data;
 using AdmNerdGo.Models;
+using AdmNerdGo.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AdmNerdGo.Controllers
@@ -12,10 +14,12 @@ namespace AdmNerdGo.Controllers
     public class CategoriaController : Controller
     {
         private readonly AdmNerdGoContext _context;
+        private readonly CategoriaServices _categoriaServices;
 
-        public CategoriaController(AdmNerdGoContext context)
+        public CategoriaController(AdmNerdGoContext context, CategoriaServices categoriaServices)
         {
             _context = context;
+            _categoriaServices = categoriaServices;
         }
 
         public async Task<IActionResult> Index()
@@ -25,6 +29,7 @@ namespace AdmNerdGo.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Categorias = _categoriaServices.FindAll().Select(a => new SelectListItem(a.Descricao, a.Id.ToString()));
             return View();
         }
 
@@ -55,10 +60,11 @@ namespace AdmNerdGo.Controllers
                 return NotFound();
             }
 
+            ViewBag.Categorias = _categoriaServices.FindAll().Select(a => new SelectListItem(a.Descricao, a.Id.ToString()));
             return View(categoria);
         }
 
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Descricao,Slug")] Categoria categoria)
         {
             if (id != categoria.Id)
             {

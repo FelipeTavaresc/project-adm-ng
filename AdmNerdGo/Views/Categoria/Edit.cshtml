@@ -19,6 +19,21 @@
                 <input asp-for="Descricao" class="form-control" />
                 <span asp-validation-for="Descricao" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label">Slug</label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CategoriaPaiId"></label>
+                <select asp-for="CategoriaPaiId" class="form-control" asp-items="@ViewBag.Categorias">
+                    <option value="">Selecione</option>
+                </select>
+                <span asp-validation-for="CategoriaPaiId" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Editar" class="botao-editar-cat btn btn-primary" />
             </div>
