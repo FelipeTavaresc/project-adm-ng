@@ -40,6 +40,7 @@ namespace AdmNerdGo.Controllers
             {
                 _context.Add(categoria);
                 await _context.SaveChangesAsync();
+                TempData["MSG_INSERT"] = "Categoria incluída com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
             return View(categoria);
@@ -91,7 +92,7 @@ namespace AdmNerdGo.Controllers
         public IActionResult Delete(int id)
         {
             _categoriaServices.Delete(id);
-            ViewData["MSG_S"] = "Registro excluído com sucesso!";
+            TempData["MSG_DELETED"] = "Categoria excluída com sucesso!";
             return RedirectToAction(nameof(Index));
         }
     }

@@ -4,10 +4,6 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="titulo-cat-sub">
-    <h1>Categorias e Subcategorias</h1>
-</div>
-
 <div class="titulo-categoria">
     <h4>Categoria</h4>
 </div>
@@ -16,9 +12,25 @@
     <a asp-action="Create">Criar categoria</a>
 </p>
 
-@if (TempData["MSG_S"] != null)
+@*@if (TempData["MSG_S"] != null)
+    {
+        <p class="alert alert-success">@TempData["MSG_S"]</p>
+    }*@
+
+@if (TempData["MSG_DELETED"] != null)
 {
-    <p class="alert alert-success">@ViewData["MSG_S"]</p>
+    <div class="animationMsg">
+        @*<p class="alert alert-danger text-center position-fixed" style="z-index:1;margin-left:25%; margin-right:25%;">@TempData["MSG_S"]</p>*@
+        <p class="alert alert-danger text-center position-fixed" style="z-index:1;margin: 0 auto;">@TempData["MSG_DELETED"]</p>
+    </div>
+}
+
+@if (TempData["MSG_INSERT"] != null)
+{
+    <div class="animationMsg">
+        @*<p class="alert alert-danger text-center position-fixed" style="z-index:1;margin-left:25%; margin-right:25%;">@TempData["MSG_S"]</p>*@
+        <p class="alert alert text-success position-fixed" style="z-index:1;margin: 0 auto;">@TempData["MSG_INSERT"]</p>
+    </div>
 }
 
 <div class="table-responsive">

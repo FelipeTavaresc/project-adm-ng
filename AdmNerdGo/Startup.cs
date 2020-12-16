@@ -33,7 +33,10 @@ namespace AdmNerdGo
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+            .AddSessionStateTempDataProvider();
+
+            services.AddSession(options => { options.Cookie.IsEssential = true; });
 
             services.AddDbContext<AdmNerdGoContext>(options =>
                     options.UseMySql(Configuration.GetConnectionString("AdmNerdGoContext"), builder =>
@@ -59,6 +62,7 @@ namespace AdmNerdGo
 
             app.UseStaticFiles();
             app.UseCookiePolicy();
+            app.UseSession();
 
             app.UseMvc(routes =>
             {
