@@ -31,5 +31,12 @@ namespace AdmNerdGo.Services
         {
             return _context.Categoria.Where(x => x.Id == id).FirstOrDefault();
         }
+
+        public void Delete(int Id)
+        {
+            Categoria categoria = FindCategoriaById(Id);
+            _context.Remove(categoria);
+            _context.SaveChanges();
+        }
     }
 }

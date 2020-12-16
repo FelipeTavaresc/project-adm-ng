@@ -46,14 +46,14 @@ namespace AdmNerdGo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? Id)
         {
-            if (id == null)
+            if (Id == null)
             {
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria.FindAsync(id);
+            var categoria = await _context.Categoria.FindAsync(Id);
 
             if (categoria == null)
             {
@@ -84,6 +84,14 @@ namespace AdmNerdGo.Controllers
                 }
             }
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            _categoriaServices.Delete(id);
+            ViewData["MSG_S"] = "Registro excluído com sucesso!";
             return RedirectToAction(nameof(Index));
         }
     }

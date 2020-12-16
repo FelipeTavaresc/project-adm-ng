@@ -671,13 +671,13 @@ margin-top: 15%;
     }
 
 .btn-secondary {
-    background-color: #03dd04;
+    /*background-color: #03dd04;*/
     color: #fff;
     padding: 0.7% 1.5% 1%;
 }
 
     .btn-secondary:hover {
-        background-color: #03dd04;
+        /*background-color: #03dd04;*/
         opacity: 60%;
     }
 
