@@ -55,10 +55,13 @@ namespace AdmNerdGo.Services
                 produtos.Add(pcp);
             }
 
-            var prodSubCategoria = _context.Produto.Where(x => x.Categoria.Id == subCategoria.Id).ToList();
-            foreach (var psc in prodSubCategoria)
+            if (subCategoria != null)
             {
-                produtos.Add(psc);
+                var prodSubCategoria = _context.Produto.Where(x => x.Categoria.Id == subCategoria.Id).ToList();
+                foreach (var psc in prodSubCategoria)
+                {
+                    produtos.Add(psc);
+                }
             }
 
             return produtos.ToPagedList<Produto>(pageNumberAux, ITEM_PER_PAGE);
