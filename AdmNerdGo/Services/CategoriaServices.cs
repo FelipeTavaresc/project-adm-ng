@@ -32,9 +32,9 @@ namespace AdmNerdGo.Services
             return _context.Categoria.Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public Categoria FindSubCategoriaByCategoriaPaiId(int id)
+        public List<Categoria> FindSubCategoriaByCategoriaPaiId(int id)
         {
-            return _context.Categoria.Where(x => x.CategoriaPaiId == id).FirstOrDefault();
+            return _context.Categoria.Where(x => x.CategoriaPaiId == id).ToList();
         }
 
         public void Delete(int Id)

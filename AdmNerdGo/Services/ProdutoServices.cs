@@ -47,7 +47,7 @@ namespace AdmNerdGo.Services
         {
             int pageNumberAux = pageNumber ?? 1;
             IList<Produto> produtos = new List<Produto>();
-            var subCategoria = _categoriaServices.FindSubCategoriaByCategoriaPaiId(id);
+            var subCategorias = _categoriaServices.FindSubCategoriaByCategoriaPaiId(id);
              
             var prodCategoriaPai = _context.Produto.Where(x => x.Categoria.Id == id).ToList();
             foreach (var pcp in prodCategoriaPai)
@@ -55,12 +55,15 @@ namespace AdmNerdGo.Services
                 produtos.Add(pcp);
             }
 
-            if (subCategoria != null)
+            if (subCategorias != null && subCategorias.Count > 0)
             {
-                var prodSubCategoria = _context.Produto.Where(x => x.Categoria.Id == subCategoria.Id).ToList();
-                foreach (var psc in prodSubCategoria)
+                foreach (var subCat in subCategorias)
                 {
-                    produtos.Add(psc);
+                    var prodSubCategoria = _context.Produto.Where(x => x.CategoriaId == subCat.Id).ToList();
+                    foreach (var psc in prodSubCategoria)
+                    {
+                        produtos.Add(psc);
+                    }
                 }
             }
 
