@@ -21,10 +21,10 @@
             <div style="margin: 0 auto; width:460px">
                 <div>
                     @{
-                        var base64Produto = Convert.ToBase64String(item.Imagem);
-                        var imgProduto = string.Format("data:image/gif;base64,{0}", base64Produto);
+                        var name = AdmNerdGo.Library.Util.GenerateSlug(item.Descricao);
+                        var fileName = item.Id.ToString() + "-" + name + ".jpg";
                     }
-                    <img style="max-width:200px; max-height:200px" src='@imgProduto' />
+                    <img style="max-width:200px; max-height:200px" src="~/img/produtos/@fileName" />
                 </div>
                 <div>
                     @{
