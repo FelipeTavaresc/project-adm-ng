@@ -79,5 +79,18 @@ namespace AdmNerdGo.Util
 
             return accents;
         }
+
+        //public static void SendImageToFtp(byte[] image, string produtoId, string slug)
+        //{
+        //    using (var ms = new MemoryStream(image, 0, image.Length))
+        //    {
+        //        string folderPath = @"C:\Users\Felipe\Documents\Visual Studio 2017\Projects\AdmNerdGo\AdmNerdGo\wwwroot\img\produtos\";
+        //        string fileName = produtoId + "-" + slug + ".jpg";
+        //        string imagePath = folderPath + fileName;
+        //        Image image = Image.FromStream(ms, true);
+        //        image.Save(imagePath, ImageFormat.Jpeg);
+        //    }
+        //}
+
     }
 }
