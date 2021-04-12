@@ -772,6 +772,12 @@ margin-top: 15%;
             opacity: 80%;
         }
 
+.pagination-container {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
 
 /* Sticky footer styles -------------------------------------------------- */
         html {

@@ -52,11 +52,11 @@ namespace AdmNerdGo.Controllers
             }
 
             await _produtoServices.InsertAsync(produto);
-            var desCategoria = _categoriaServices.FindCategoriaById(produto.CategoriaId).Descricao;
+            var desCategoria = _categoriaServices.FindCategoriaById(produto.CategoriaId);
 
             //return RedirectToAction(nameof(Index));
-            var categoria = Functions.RemoveDiacritics(desCategoria);
-            return RedirectToAction("Index", categoria);
+            var categoria = Functions.RemoveDiacritics(desCategoria.Descricao);
+            return RedirectToAction(nameof(Categoria), new { id = desCategoria.Id });
         }
 
         public IActionResult Categoria(int id, int? pageNumber)
