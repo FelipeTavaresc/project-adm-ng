@@ -1,0 +1,26 @@
+﻿@model List<Categoria>
+
+<ul class="navbar-nav mr-auto">
+    @{
+        var TodasCategorias = Model.ToList();
+    }
+    @if (TodasCategorias != null && TodasCategorias.Count > 0)
+    {
+        <div class="dropdown">
+            <a class="nav-link dropdown-toggle @((ViewContext.RouteData.Values["controller"].ToString() == "Home" && ViewContext.RouteData.Values["action"].ToString() == "Categoria") ? "active" : "" )" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-list-ul"></i> Categorias
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                @{
+                    var CategoriasPrincipais = TodasCategorias.Where(a => a.CategoriaPaiId == null).ToList();
+                    ViewData["TodasCategorias"] = TodasCategorias;
+                }
+                @foreach (var categoria in CategoriasPrincipais)
+                {
+                    @await Html.PartialAsync("~/Views/Shared/Components/Menu/_Submenu.cshtml", new ViewDataDictionary(ViewData) { { "CategoriaPai", categoria } })
+                }
+            </ul>
+        </div>
+    }
+</ul>

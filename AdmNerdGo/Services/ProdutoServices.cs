@@ -38,6 +38,13 @@ namespace AdmNerdGo.Services
             await _context.SaveChangesAsync();
         }
 
+        public async Task<int> InsertAndReturnIdAsync(Produto obj)
+        {
+            _context.Add(obj);
+            await _context.SaveChangesAsync();
+            return obj.Id;
+        }
+
         public async Task<List<Produto>> FindByCategoryId(int id)
         {
             return await _context.Produto.Where(x => x.Categoria.Id == id).ToListAsync();

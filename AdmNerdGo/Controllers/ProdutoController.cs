@@ -42,8 +42,6 @@ namespace AdmNerdGo.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Produto produto, List<IFormFile> Imagem)
         {
-            produto.Imagem = Functions.ConvertImageToByte(Imagem);
-
             if (!ModelState.IsValid)
             {
                 var categorias = await _categoriaServices.FindAllAsync();
@@ -51,12 +49,22 @@ namespace AdmNerdGo.Controllers
                 return View(viewModel);
             }
 
-            await _produtoServices.InsertAsync(produto);
-            var desCategoria = _categoriaServices.FindCategoriaById(produto.CategoriaId);
+            var prodId = await _produtoServices.InsertAndReturnIdAsync(produto);
+
+            if (Imagem.Count > 0)
+            {
+                var image = Functions.ConvertImageToByte(Imagem);
+                var slug = AdmNerdGo.Library.Util.GenerateSlug(produto.Descricao);
+                var imagePath = Functions.SaveImageInDirectory(image, prodId.ToString(), slug);
+                var imageName = prodId.ToString() + "-" + slug + ".jpg";
+                Functions.UploadImageToFtp(imagePath, imageName);
+            }
+
+            var desCategoria = _categoriaServices.FindCategoriaById(produto.CategoriaId).Descricao;
 
             //return RedirectToAction(nameof(Index));
-            var categoria = Functions.RemoveDiacritics(desCategoria.Descricao);
-            return RedirectToAction(nameof(Categoria), new { id = desCategoria.Id });
+            var categoria = Functions.RemoveDiacritics(desCategoria);
+            return RedirectToAction("Index", categoria);
         }
 
         public IActionResult Categoria(int id, int? pageNumber)

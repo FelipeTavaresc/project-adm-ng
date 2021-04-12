@@ -44,11 +44,11 @@
                     <a asp-area="" asp-controller="Compare" asp-action="Index">
                         <div class="card">
                             @{
-                                var base64 = Convert.ToBase64String(item.Imagem);
-                                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+                                var name = AdmNerdGo.Library.Util.GenerateSlug(item.Descricao);
+                                var fileName = item.Id.ToString() + "-" + name + ".jpg";
                             }
 
-                            <img class="card-img-top" style="max-width:250px; max-height:250px" src="@imgSrc" alt="Imagem de capa do card">
+                            <img class="card-img-top" style="max-width:250px; max-height:250px" src="~/img/produtos/@fileName" alt="Imagem de capa do card">
                             <div class=" ">
 
                                 <p class="card-text">@Html.DisplayFor(modelItem => item.Descricao)</p>

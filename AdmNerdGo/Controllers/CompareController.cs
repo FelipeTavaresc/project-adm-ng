@@ -34,7 +34,6 @@ namespace AdmNerdGo.Controllers
             var comparacao = await _compareServices.ListComparationByProductId(id.Value);
 
             var viewModel = new CompareFormViewModel { Produtos = produto, Lojas = loja, ListCompare = comparacao };
-
             return View(viewModel);
         }
 

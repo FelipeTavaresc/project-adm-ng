@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -78,6 +81,38 @@ namespace AdmNerdGo.Util
             accents[(byte)'Ý'] = 'Y';
 
             return accents;
+        }
+
+        public static string SaveImageInDirectory(byte[] image, string produtoId, string slug)
+        {
+            string imagePath = string.Empty;
+            using (var ms = new MemoryStream(image, 0, image.Length))
+            {
+                string folderPath = @"C:\Users\Felipe\Documents\Visual Studio 2017\Projects\AdmNerdGo\AdmNerdGo\wwwroot\img\produtos\";
+                string fileName = produtoId + "-" + slug + ".jpg";
+                imagePath = folderPath + fileName;
+                Image img = Image.FromStream(ms, true);
+                img.Save(imagePath, ImageFormat.Jpeg);
+            }
+            return imagePath;
+        }
+
+        public static void UploadImageToFtp(string imagePath, string imageName)
+        {
+            var request = (System.Net.FtpWebRequest)System.Net.WebRequest.Create("ftp://nerdgo.com.br/www/wwwroot/img/produtos/" + imageName);
+            request.Method = System.Net.WebRequestMethods.Ftp.UploadFile;
+            request.Credentials = new System.Net.NetworkCredential("nerdgo", "brnd0804");
+
+            var conteudoArquivo = System.IO.File.ReadAllBytes(imagePath);
+            request.ContentLength = conteudoArquivo.Length;
+
+            var requestStream = request.GetRequestStream();
+            requestStream.Write(conteudoArquivo, 0, conteudoArquivo.Length);
+            requestStream.Close();
+
+            var response = (System.Net.FtpWebResponse)request.GetResponse();
+            //Console.WriteLine("Upload completo. Status: {0}", response.StatusDescription);
+            response.Close();
         }
     }
 }
