@@ -61,7 +61,11 @@ namespace AdmNerdGo.Controllers
 
             if (Imagem.Count > 0)
             {
-                produto.Imagem = Functions.ConvertImageToByte(Imagem);
+                var image = Functions.ConvertImageToByte(Imagem);
+                var slug = AdmNerdGo.Library.Util.GenerateSlug(produto.Descricao);
+                var imagePath = Functions.SaveImageInDirectory(image, id.ToString(), slug);
+                var imageName = id.ToString() + "-" + slug + ".jpg";
+                Functions.UploadImageToFtp(imagePath, imageName);
             }
 
             try

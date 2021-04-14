@@ -88,7 +88,7 @@ namespace AdmNerdGo.Util
             string imagePath = string.Empty;
             using (var ms = new MemoryStream(image, 0, image.Length))
             {
-                string folderPath = @"C:\Users\Felipe\Documents\Visual Studio 2017\Projects\AdmNerdGo\AdmNerdGo\wwwroot\img\produtos\";
+                string folderPath = @"C:\Users\felip\source\repos\AdmNerdGo\AdmNerdGo\wwwroot\img\produtos\";
                 string fileName = produtoId + "-" + slug + ".jpg";
                 imagePath = folderPath + fileName;
                 Image img = Image.FromStream(ms, true);
